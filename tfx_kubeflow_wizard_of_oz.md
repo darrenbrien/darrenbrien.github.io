@@ -68,7 +68,7 @@ This is a classic pipeline, but developers can choose to work with only some of 
 * **Pusher **persists our model to storage. If we’re using TensorFlowServing, this step can release our model to production. If you’re targeting mobile or the browser pusher also support TFLite and TF.js.
 
 ## Which orchestrator should I use?
-> # "Pay no attention to that man behind the curtain!"
+> # “Pay no attention to that man behind the curtain!”
 
 TFX provides a higher level of abstraction when building ML pipelines. It’s designed to be portable which means you’re not locked into a single environment or orchestration framework. Furthermore, you can run it on-premise or on cloud platforms, it’s also conceivable for a pipeline to run in multiple cloud environments. This flexibility means you can pick the platform which best suits your needs.
 
@@ -83,7 +83,7 @@ A TFX DAG is executed on an Orchestrator, currently, TFX supports a few of these
 The Trainer and Pusher components have executors that support these components being executed on the GCP AI platform to train and serve your model in a serverless environment.
 
 ## Closing thoughts
-> "Toto, I’ve got a feeling we’re not in Kansas anymore."
+> “Toto, I’ve got a feeling we’re not in Kansas anymore.”
 
 ![Photo by [Akshay Nanavati](https://unsplash.com/@anphotos?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)](https://cdn-images-1.medium.com/max/12000/0*pP_QKuKomUvF1qrB)*Photo by [Akshay Nanavati](https://unsplash.com/@anphotos?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)*
 
