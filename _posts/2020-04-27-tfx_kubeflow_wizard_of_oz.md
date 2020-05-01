@@ -1,4 +1,7 @@
-# Dodge the Wicked Witch of ML Pipelines with TensorFlow Extended (TFX)
+---
+layout: post
+title: "Dodge the Wicked Witch of ML Pipelines with TensorFlow Extended (TFX)"
+---
 
 Machine Learning pipelines give rise to challenges for the teams which build and maintain them. Changes to data over time can give rise to unexpected outcomes, which leads to bugs in places where you don’t find them in other software.
 
@@ -25,7 +28,8 @@ Dorothy sends Toto ahead with a camera, as he encounters new animals along the w
 
 Dorothy spots a problem, her corpus images are well-curated, high resolution, and landscape-oriented. Toto’s images aren’t so professional, and because the aspect ratio is different, she’ll have to make some changes to her model.
 
-![Toto’s images are portrait and aren’t as well-framed as our training images.](https://cdn-images-1.medium.com/max/2000/1*_HRQpvZ5rhpxczSGnF_ozg.jpeg)*Toto’s images are portrait and aren’t as well-framed as our training images.*
+![Toto’s images are portrait and aren’t as well-framed as our training images.](https://cdn-images-1.medium.com/max/2000/1*_HRQpvZ5rhpxczSGnF_ozg.jpeg)
+*Toto’s images are portrait and aren’t as well-framed as our training images.*
 
 ## What is a machine learning pipeline?
 > ## “I’ll get you, my pretty, and your little dog too”
