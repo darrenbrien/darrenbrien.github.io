@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Dodge the Wicked Witch of ML Pipelines with TensorFlow Extended (TFX)"
+author: Darren Brien
 ---
 
 Machine Learning pipelines give rise to challenges for the teams which build and maintain them. Changes to data over time can give rise to unexpected outcomes, which leads to bugs in places where you don’t find them in other software.
