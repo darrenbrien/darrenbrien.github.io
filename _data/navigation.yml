@@ -4,4 +4,9 @@
   link: /about.html
 - name: Blog
   link: /blog.html
-
+- name: Talks
+  link: /talks.html
+- name: Twitter
+  link: http://twitter.com/darrenkbrien
+- name: YouTube
+  link: http://youtube.com/darrenbrien
