@@ -1,4 +1,8 @@
 collections:
-        authors:
-theme: jekyll-theme-architect
+  authors:
 name: darren brien's blog
+sass:
+  load_paths:
+    - _sass
+    - node_modules
+exclude: []

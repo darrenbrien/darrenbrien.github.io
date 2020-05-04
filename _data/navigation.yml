@@ -1,11 +1,11 @@
 - name: Home
   link: /
 - name: About
-  link: /about.html
+  link: /about
 - name: Blog
-  link: /blog.html
+  link: /blog
 - name: Talks
-  link: /talks.html
+  link: /talks
 - name: Twitter
   link: http://twitter.com/darrenkbrien
 - name: YouTube
