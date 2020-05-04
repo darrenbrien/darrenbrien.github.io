@@ -4,30 +4,35 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://wesmckinney.com/theme/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
+    <title>{{ page.title }}</title>
   </head>
   <body>
     <header>
-        {% include navigation.html %}
+      {% include navigation.html %}
     </header>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-xl-10 col-md-12">
           {{ content }}
         </div>
-        <div id="card my-4">
-          <h5 class="card-body">Side info</h5>
-          <div class="card-body">
-            theres a lot more informationi can put in here but i don't have the
-            time right now
-          </div>
-        </div>
+        <!-- <div class="col-lg-4"> -->
+        <!--   <h5 class="card-body">Side info</h5> -->
+        <!--   <div class="card-body"> -->
+        <!--     theres a lot more informationi can put in here but i don't have the -->
+        <!--     time right now -->
+        <!--   </div> -->
+        <!-- </div> -->
       </div>
     </div>
-    {% include footer.html %}
+    <footer>
+      {% include footer.html %}
+    </footer>
+    {% include scripts.html %}
   </body>
 </html>

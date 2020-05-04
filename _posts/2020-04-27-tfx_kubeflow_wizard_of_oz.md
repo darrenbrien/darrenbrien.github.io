@@ -67,7 +67,7 @@ This is a classic pipeline, but developers can choose to work with only some of 
 
 * **Evaluator** and **ResolverNode** work in tandem to evaluate the model. The Evaluator component evaluates metrics we are interested in tracking our model against. ResolverNode provides a previous best model to run the evaluation set against, this ensures we compare old with new on a level playing field. If the newly trained model outperforms the existing one we “bless” the new model. Absolute performance metrics can also be specified, for example, accuracy must exceed 80%. These components prevent poor quality models making it into production. We can also evaluate metrics across slices of our data, [ROC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve) by an hour of the day for example, this gives us insight into where our model may be doing poorly and could be improved.
 
-![Evaluation metrics calculated by hour of day](https://cdn-images-1.medium.com/max/4696/1*vWcmRXHFbS8-SFiG_nhwVw.png){: .img-fluid}*Evaluation metrics calculated by hour of day*
+![Various evaluation metrics calculated across several splits](https://raw.githubusercontent.com/tensorflow/model-analysis/master/g3doc/images/tfma-slicing-metrics-browser.gif){: .img-fluid}*Evaluation metrics calculated by hour of day*
 
 * **Pusher** persists our model to storage. If we’re using TensorFlowServing, this step can release our model to production. If you’re targeting mobile or the browser pusher also support TFLite and TF.js.
 

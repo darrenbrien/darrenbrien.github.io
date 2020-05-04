@@ -6,3 +6,4 @@ sass:
     - _sass
     - node_modules
 exclude: []
+bootswatch_theme: lux
