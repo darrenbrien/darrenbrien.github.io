@@ -12,7 +12,6 @@
   </head>
   <body>
     <header>
-      <div class="inner">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
     <a href="/" class="navbar-brand">
@@ -48,19 +47,19 @@
           <a href="http://youtube.com/darrenbrien" class="nav-link">YouTube</a>
         </li>
         
+        <li class="nav-item">
+          <a href="http://github.com/darrenbrien" class="nav-link">Code</a>
+        </li>
+        
       </ul>
     </div>
   </div>
 </nav>
-<nav>
-</nav>
 
-      </div>
     </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
           <h1>Dodge the Wicked Witch of ML Pipelines with TensorFlow Extended (TFX)</h1>
 <p>27 Apr 2020 - Darren Brien</p>
 
@@ -74,29 +73,28 @@
 
 <h2 id="when-the-data-doesnt-match-reality">When the data doesn’t match reality</h2>
 <blockquote>
-  <h2 id="lions-tigers-and-bears-oh-my">“Lions? Tigers? and Bears? Oh my!”</h2>
+  <h4 id="lions-tigers-and-bears-oh-my">“Lions? Tigers? and Bears? Oh my!”</h4>
 </blockquote>
 
 <p>Dorothy is navigating the yellow brick road through some dense forest, she wants to make it all the way to the Emerald City! She’s not too concerned about Lions, they’re pretty cowardly. Tigers and Bears are to be avoided.</p>
 
 <p>With a solid 5G connection she can get her hands on a good amount of data and train a classifier to distinguish Lions from Tigers and Bears. We start with a corpus as below and hope to build our dataset over time.</p>
 
-<p><img src="https://cdn-images-1.medium.com/max/12000/0*uaNXFVAQTY0rA22A" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/12000/0*uaNXFVAQTY0rA22A" alt="" class="img-fluid" /></p>
 
-<p><img src="https://cdn-images-1.medium.com/max/7440/0*FN56YtIZNSpZqU5z" alt="" /></p>
+<p><img src="https://cdn-images-1.medium.com/max/7440/0*FN56YtIZNSpZqU5z" alt="" class="img-fluid" /></p>
 
-<p><img src="https://cdn-images-1.medium.com/max/9810/0*wW1lSujj0_QNR_1v" alt="Photo by Mika Brandt on Unsplash" /><em>Photo by Mika Brandt on Unsplash</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/9810/0*wW1lSujj0_QNR_1v" alt="Photo by Mika Brandt on Unsplash" class="img-fluid" /><em>Photo by Mika Brandt on Unsplash</em></p>
 
 <p>Dorothy sends Toto ahead with a camera, as he encounters new animals along the way the model makes predictions. Overnight, when Scarecrow and the Tin Man are asleep, she retrains the model adding newly collected data. This way our classifier will improve, blending our original corpus with new data. The model’s performance (accuracy, loss, etc.) should be estimated from data which is representative of what we expect to see tomorrow, so Dorothy uses Toto’s pictures to evaluate the model.</p>
 
 <p>Dorothy spots a problem, her corpus images are well-curated, high resolution, and landscape-oriented. Toto’s images aren’t so professional, and because the aspect ratio is different, she’ll have to make some changes to her model.</p>
 
-<p><img src="https://cdn-images-1.medium.com/max/2000/1*_HRQpvZ5rhpxczSGnF_ozg.jpeg" alt="Toto’s images are portrait and aren’t as well-framed as our training images." />
-<em>Toto’s images are portrait and aren’t as well-framed as our training images.</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*_HRQpvZ5rhpxczSGnF_ozg.jpeg" alt="Toto’s images are portrait and aren’t as well-framed as our training images." class="img-fluid" /><em>Toto’s images are portrait and aren’t as well-framed as our training images.</em></p>
 
 <h2 id="what-is-a-machine-learning-pipeline">What is a machine learning pipeline?</h2>
 <blockquote>
-  <h2 id="ill-get-you-my-pretty-and-your-little-dog-too">“I’ll get you, my pretty, and your little dog too”</h2>
+  <h4 id="ill-get-you-my-pretty-and-your-little-dog-too">“I’ll get you, my pretty, and your little dog too”</h4>
 </blockquote>
 
 <p>In the wild, ;), spotting these sorts of data issues can be tricky. Often we collect data over time, subtle changes (or drifts) in the distribution of features can cause issues to skip further down the yellow brick road.</p>
@@ -109,14 +107,14 @@
 
 <h2 id="how-tensorflow-extended-can-help">How TensorFlow Extended can help</h2>
 <blockquote>
-  <h2 id="the-wizard-of-oz-is-one-because-of-the-wonderful-things-he-does">“The Wizard of Oz is one because of the wonderful things he does!”</h2>
+  <h4 id="the-wizard-of-oz-is-one-because-of-the-wonderful-things-he-does">“The Wizard of Oz is one because of the wonderful things he does!”</h4>
 </blockquote>
 
 <p>TFX makes reasoning about your production machine learning pipeline easier. Helping you understand, validate, and monitor your data at scale. It has mechanisms to detect skew between your training and evaluation data as well as training and inference data. The architecture is scalable and ensures your process is repeatable and reproducible. Dorothy would like TFX!</p>
 
 <p>Pipelines in TFX are built out of <a href="https://www.tensorflow.org/tfx/guide#tfx_pipeline_components">components</a>, these are distinct steps that are responsible for one thing. Components are composed via the artifacts they exchange as inputs and outputs. Collections of components form a Directed Acyclic Graph (DAG) which describes a pipeline’s dependencies, they can be efficiently scheduled and executed on an orchestrator (more on these later).</p>
 
-<p><img src="https://cdn-images-1.medium.com/max/2412/1*rVnkZY7Al15sIwiV9ssR-Q.png" alt="Example DAG for an image processing pipeline (Kubeflow)" /><em>Example DAG for an image processing pipeline (Kubeflow)</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/2412/1*rVnkZY7Al15sIwiV9ssR-Q.png" alt="Example DAG for an image processing pipeline (Kubeflow)" class="img-fluid" /><em>Example DAG for an image processing pipeline (Kubeflow)</em></p>
 
 <p>This is a classic pipeline, but developers can choose to work with only some of the following components because they are composable.</p>
 
@@ -124,13 +122,13 @@
   <li>Pipelines start with an <strong>ExampleGen</strong>, these components source data in its raw format from storage (disk/database). ExampleGens are coupled to your data format CSV, JSON, or TFRecords and they output training and evaluation sets. Subsequent components will use this raw data. ImportExampleGen can read TFRecords from cloud storage for example. If any of the example components isn’t enough for you, just implement your <a href="https://www.tensorflow.org/tfx/guide/custom_component">own</a>.</li>
 </ul>
 
-<p><img src="https://cdn-images-1.medium.com/max/3424/1*Elwgi-gLB7FVvR5bCgUjDg.png" alt="Read TFRecords from disk/cloud storage, split the training data 75%/25% train/eval" /><em>Read TFRecords from disk/cloud storage, split the training data 75%/25% train/eval</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/3424/1*Elwgi-gLB7FVvR5bCgUjDg.png" alt="Read TFRecords from disk/cloud storage, split the training data 75%/25% train/eval" class="img-fluid" /><em>Read TFRecords from disk/cloud storage, split the training data 75%/25% train/eval</em></p>
 
 <ul>
   <li><strong>StatisticsGen</strong>, <strong>SchemaGen,</strong> and <strong>Example Validator</strong> components work together and help you reason about our input data. StatisticsGen calculates feature statistics across the data. SchemaGen specifies the types and ranges the data can take, this can be automatically inferred, but specifying ranges manually can make errors easier to detect. ExampleValidator detects anomalous data using output from SchemaGen and StatisticsGen (see DAG above).</li>
 </ul>
 
-<p><img src="https://cdn-images-1.medium.com/max/2000/1*qIiZl7ouBZj7mj1yVjZmGA.png" alt="Anomalies detected on some tabular data" /><em>Anomalies detected on some tabular data</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*qIiZl7ouBZj7mj1yVjZmGA.png" alt="Anomalies detected on some tabular data" class="img-fluid" /><em>Anomalies detected on some tabular data</em></p>
 
 <ul>
   <li>
@@ -144,15 +142,15 @@
   </li>
 </ul>
 
-<p><img src="https://cdn-images-1.medium.com/max/4696/1*vWcmRXHFbS8-SFiG_nhwVw.png" alt="Evaluation metrics calculated by hour of day" /><em>Evaluation metrics calculated by hour of day</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/4696/1*vWcmRXHFbS8-SFiG_nhwVw.png" alt="Evaluation metrics calculated by hour of day" class="img-fluid" /><em>Evaluation metrics calculated by hour of day</em></p>
 
 <ul>
-  <li>**Pusher **persists our model to storage. If we’re using TensorFlowServing, this step can release our model to production. If you’re targeting mobile or the browser pusher also support TFLite and TF.js.</li>
+  <li><strong>Pusher</strong> persists our model to storage. If we’re using TensorFlowServing, this step can release our model to production. If you’re targeting mobile or the browser pusher also support TFLite and TF.js.</li>
 </ul>
 
 <h2 id="which-orchestrator-should-i-use">Which orchestrator should I use?</h2>
 <blockquote>
-  <h2 id="pay-no-attention-to-that-man-behind-the-curtain">“Pay no attention to that man behind the curtain!”</h2>
+  <h4 id="pay-no-attention-to-that-man-behind-the-curtain">“Pay no attention to that man behind the curtain!”</h4>
 </blockquote>
 
 <p>TFX provides a higher level of abstraction when building ML pipelines. It’s designed to be portable which means you’re not locked into a single environment or orchestration framework. Furthermore, you can run it on-premise or on cloud platforms, it’s also conceivable for a pipeline to run in multiple cloud environments. This flexibility means you can pick the platform which best suits your needs.</p>
@@ -175,20 +173,23 @@
 
 <h2 id="closing-thoughts">Closing thoughts</h2>
 <blockquote>
-  <h2 id="toto-ive-got-a-feeling-were-not-in-kansas-anymore">“Toto, I’ve got a feeling we’re not in Kansas anymore.”</h2>
+  <h4 id="toto-ive-got-a-feeling-were-not-in-kansas-anymore">“Toto, I’ve got a feeling we’re not in Kansas anymore.”</h4>
 </blockquote>
 
-<p><img src="https://cdn-images-1.medium.com/max/12000/0*pP_QKuKomUvF1qrB" alt="Photo by [Akshay Nanavati](https://unsplash.com/@anphotos?utm_source=medium&amp;utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&amp;utm_medium=referral)" /><em>Photo by <a href="https://unsplash.com/@anphotos?utm_source=medium&amp;utm_medium=referral">Akshay Nanavati</a> on <a href="https://unsplash.com?utm_source=medium&amp;utm_medium=referral">Unsplash</a></em></p>
+<p><img src="https://cdn-images-1.medium.com/max/12000/0*pP_QKuKomUvF1qrB" alt="" class="img-fluid" /></p>
 
 <p>More teams than ever are responsible for managing Machine Learning pipelines in production. TFX helps manage some of the unique challenges ML teams face bringing their software to the production environment. TFX runs on a growing list of orchestrators, you may already have most of the infrastructure you need to get started using TFX today! Choosing the right orchestrator will allow your platform to grow with your data and support the experimentation necessary to build useful models.</p>
 
 
 
-        </section>
-
-        <aside id="sidebar">
-
-        </aside>
+        </div>
+        <div id="card my-4">
+          <h5 class="card-body">Side info</h5>
+          <div class="card-body">
+            theres a lot more informationi can put in here but i don't have the
+            time right now
+          </div>
+        </div>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
