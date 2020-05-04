@@ -8,7 +8,10 @@
   link: /talks
 - name: Twitter
   link: http://twitter.com/darrenkbrien
+  icon: True
 - name: YouTube
   link: http://youtube.com/darrenbrien
+  icon: True
 - name: Code
   link: http://github.com/darrenbrien
+  icon: True

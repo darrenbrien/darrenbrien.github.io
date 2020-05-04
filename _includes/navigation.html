@@ -10,7 +10,14 @@
       <ul class="navbar-nav">
         {% for item in site.data.navigation %}
         <li class="nav-item">
+          {% if item.icon %}
+          <div class="row">
+            <a href="{{ item.link }}" class="nav-link fa fa-{{ item.name | downcase }}"></a>
+            <a href="{{ item.link }}" class="nav-link"> {{ item.name }}</a>
+          </div>
+          {% else %}
           <a href="{{ item.link }}" class="nav-link">{{ item.name }}</a>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>
