@@ -1,0 +1,4 @@
+
+- title: AWS Webinar Lake Formation
+  date: TBA
+  excerpt: Preparation of data for analysis is an essential part of any analytics system. Expediting this process shortens the time between event and insight. Securing, loading, cataloging and processing data lead to complex work flows which are easy to get wrong. Lake formation provides a set of tools and templates which make it simpler for teams to perform these tasks in an automated way. Working with heterogenous data and making it available to provide insight faster. In this talk we'll ingest with a large and complex data set, transfer it to a data lake in a format ready for analysis, we'll catalog it's content and ensure the appropriate security policies protect it. We'll build some dashboard to gain some intuition about the data and finally we'll apply some machine learning to enhance our human insights.  

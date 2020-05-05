@@ -3,9 +3,23 @@ layout: default
 title: Talks
 ---
 # Talks
-* I often present at the London Multi-Cloud meet up group
-* Past talks are available on my youtube channel
 
 ## Upcoming
+<ul>
+  {% for talk in site.data.upcoming %}
+    <li>
+      <h2>{{ talk.title }} - {{ talk.date }}</h2>
+      {{ talk.excerpt }}
+    </li>
+  {% endfor %}
+</ul>
 
 ## Past
+<ul>
+  {% for talk in site.data.talks %}
+    <li>
+      <h2>{{ talk.title }} - {{ talk.date }}</h2>
+      {{ talk.excerpt }}
+    </li>
+  {% endfor %}
+</ul>
