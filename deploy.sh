@@ -7,4 +7,5 @@ git checkout master
 rm -Rf *
 rm -Rf .j*
 mv ../_site/* .
+rmdir ../_site
 git add .
