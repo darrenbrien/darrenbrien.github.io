@@ -12,8 +12,8 @@
         <li class="nav-item">
           {% if item.icon %}
           <div class="row">
-            <a href="{{ item.link }}" class="nav-link fa fa-{{ item.name | downcase }}"></a>
-            <a href="{{ item.link }}" class="nav-link"> {{ item.name }}</a>
+            <a href="{{ item.link }}" class="nav-link fa fa-{{ item.name | downcase }} fa-2x" target="_blank"></a>
+            <a href="{{ item.link }}" class="nav-link" target="_blank"> {{ item.name }}</a>
           </div>
           {% else %}
           <a href="{{ item.link }}" class="nav-link">{{ item.name }}</a>
