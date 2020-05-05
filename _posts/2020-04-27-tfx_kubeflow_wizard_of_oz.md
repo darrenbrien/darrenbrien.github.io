@@ -23,13 +23,14 @@ With a solid 5G connection she can get her hands on a good amount of data and tr
 
 ![](https://cdn-images-1.medium.com/max/7440/0*FN56YtIZNSpZqU5z){: .img-fluid}
 
-![Photo by Mika Brandt on Unsplash](https://cdn-images-1.medium.com/max/9810/0*wW1lSujj0_QNR_1v){: .img-fluid}*Photo by Mika Brandt on Unsplash*
+![](https://cdn-images-1.medium.com/max/9810/0*wW1lSujj0_QNR_1v){: .img-fluid}
 
 Dorothy sends Toto ahead with a camera, as he encounters new animals along the way the model makes predictions. Overnight, when Scarecrow and the Tin Man are asleep, she retrains the model adding newly collected data. This way our classifier will improve, blending our original corpus with new data. The model’s performance (accuracy, loss, etc.) should be estimated from data which is representative of what we expect to see tomorrow, so Dorothy uses Toto’s pictures to evaluate the model.
 
 Dorothy spots a problem, her corpus images are well-curated, high resolution, and landscape-oriented. Toto’s images aren’t so professional, and because the aspect ratio is different, she’ll have to make some changes to her model.
 
-![Toto’s images are portrait and aren’t as well-framed as our training images.](https://cdn-images-1.medium.com/max/2000/1*_HRQpvZ5rhpxczSGnF_ozg.jpeg){: .img-fluid}*Toto’s images are portrait and aren’t as well-framed as our training images.*
+![Toto’s images are portrait and aren’t as well-framed as our training images.](https://cdn-images-1.medium.com/max/2000/1*_HRQpvZ5rhpxczSGnF_ozg.jpeg){: .img-fluid .rounded .mx-auto .d-block}
+<br/>*Toto’s images are portrait and aren’t as well-framed as our training images.*
 
 ## What is a machine learning pipeline?
 > #### “I’ll get you, my pretty, and your little dog too”
