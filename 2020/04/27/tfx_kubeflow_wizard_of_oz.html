@@ -33,7 +33,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-04-27T00:00:00+01:00" />
 <script type="application/ld+json">
-{"headline":"Dodge the Wicked Witch of ML Pipelines with TensorFlow Extended (TFX)","dateModified":"2020-04-27T00:00:00+01:00","datePublished":"2020-04-27T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html"},"author":{"@type":"Person","name":"Darren Brien"},"url":"http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html","description":"TFX helps manage some of the unique challenges machine learning teams face bringing their software to the production environment","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Darren Brien"},"headline":"Dodge the Wicked Witch of ML Pipelines with TensorFlow Extended (TFX)","dateModified":"2020-04-27T00:00:00+01:00","datePublished":"2020-04-27T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html"},"url":"http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html","description":"TFX helps manage some of the unique challenges machine learning teams face bringing their software to the production environment","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -115,21 +115,19 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <div class="share-box">
-  <h5>Share this:</h5>
-  <div class="row">
-    <a class="col-md-2 col-3" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-facebook-official fa"></i><span> facebook</span></a>
-    <a class="col-md-2 col-3" href="https://twitter.com/intent/tweet?text=&url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter fa"></i><span> twitter</span></a>
-    <a class="col-md-2 col-3" href="http://www.reddit.com/submit?url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-reddit fa"></i><span> reddit</span></a>
-    <a class="col-md-2 col-3" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-linkedin fa"></i><span> linkedin</span></a>
-    <a class="col-md-2 col-3" href="mailto:?subject=&amp;body=Check out this site http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html"><i class="fa fa-envelope fa"></i><span> email</span></a>                          </div>
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="col-1"><span class="fa fa-share-alt"><b> Share</b></span></div>
+    <a class="col-1" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-facebook-official fa-2x"></i></a>
+    <a class="col-1" href="https://twitter.com/intent/tweet?text=&url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter fa-lg"></i><span></span></a>
+    <a class="col-1" href="http://www.reddit.com/submit?url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-reddit fa-lg"></i></a>
+    <a class="col-1" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-linkedin fa-lg"></i></a>
+    <a class="col-1" href="mailto:?subject=&amp;body=Check out this site http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html"><i class="fa fa-envelope fa-lg"></i></a></div>
 </div>
 
 
-<p>Machine Learning pipelines give rise to challenges for the teams which build and maintain them. Changes to data over time can give rise to unexpected outcomes, which leads to bugs in places where you don’t find them in other software.</p>
+<p>Machine Learning pipelines give rise to challenges for the teams which build and maintain them. Changes to data over time can give rise to unexpected outcomes, which leads to bugs in places where you don’t find them in other software. Understanding your data and how it may change over time makes reasoning about machine learning pipelines easier. ML teams need additional tools to help keep their models up to date and predictions relevant, TFX is one such tool.</p>
 
 <p>Even if the code hasn’t changed, the system behavior can because the data we use to train our models determines the predictions we make. If the data we are making predictions on today is different from the data we trained on, then all bets are off!</p>
-
-<p>Understanding your data and how it may change over time makes reasoning about machine learning pipelines easier. ML teams need additional tools to help keep their models up to date and predictions relevant, TFX is one such tool.</p>
 
 <p>Let’s look at some common challenges when bringing ML to production and how TFX addresses them with a little help from Dorothy, Toto, and the Wizard of Oz!</p>
 
@@ -247,13 +245,13 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <div class="share-box">
-  <h5>Share this:</h5>
-  <div class="row">
-    <a class="col-md-2 col-3" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-facebook-official fa"></i><span> facebook</span></a>
-    <a class="col-md-2 col-3" href="https://twitter.com/intent/tweet?text=&url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter fa"></i><span> twitter</span></a>
-    <a class="col-md-2 col-3" href="http://www.reddit.com/submit?url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-reddit fa"></i><span> reddit</span></a>
-    <a class="col-md-2 col-3" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-linkedin fa"></i><span> linkedin</span></a>
-    <a class="col-md-2 col-3" href="mailto:?subject=&amp;body=Check out this site http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html"><i class="fa fa-envelope fa"></i><span> email</span></a>                          </div>
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="col-1"><span class="fa fa-share-alt"><b> Share</b></span></div>
+    <a class="col-1" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-facebook-official fa-2x"></i></a>
+    <a class="col-1" href="https://twitter.com/intent/tweet?text=&url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter fa-lg"></i><span></span></a>
+    <a class="col-1" href="http://www.reddit.com/submit?url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-reddit fa-lg"></i></a>
+    <a class="col-1" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-linkedin fa-lg"></i></a>
+    <a class="col-1" href="mailto:?subject=&amp;body=Check out this site http://blog.darrenkbrien.com/2020/04/27/tfx_kubeflow_wizard_of_oz.html"><i class="fa fa-envelope fa-lg"></i></a></div>
 </div>
 
 
