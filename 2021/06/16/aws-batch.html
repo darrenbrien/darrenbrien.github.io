@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/main.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180x180.png" />
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>AWS Batch: Your Data Processing Gateway to the Upside Down | darren brien’s blog</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="AWS Batch: Your Data Processing Gateway to the Upside Down" />
+<meta name="author" content="Darren Brien" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="As fans of the hit Netflix series “Stranger Things,” we’re always on the lookout for ways to bring the Upside Down into our everyday lives. And what better way to do that than with AWS Batch, the cloud computing service that allows you to run batch processing jobs at any scale? In this blog post, we’ll explore how AWS Batch can help you demogorgon-proof your data processing, making it faster and more efficient than ever before. So grab your Eggo waffles and get ready to enter the world of AWS Batch!" />
+<meta property="og:description" content="As fans of the hit Netflix series “Stranger Things,” we’re always on the lookout for ways to bring the Upside Down into our everyday lives. And what better way to do that than with AWS Batch, the cloud computing service that allows you to run batch processing jobs at any scale? In this blog post, we’ll explore how AWS Batch can help you demogorgon-proof your data processing, making it faster and more efficient than ever before. So grab your Eggo waffles and get ready to enter the world of AWS Batch!" />
+<link rel="canonical" href="http://blog.darrenkbrien.com/2021/06/16/aws-batch.html" />
+<meta property="og:url" content="http://blog.darrenkbrien.com/2021/06/16/aws-batch.html" />
+<meta property="og:site_name" content="darren brien’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-06-16T00:00:00+01:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Darren Brien"},"headline":"AWS Batch: Your Data Processing Gateway to the Upside Down","dateModified":"2021-06-16T00:00:00+01:00","datePublished":"2021-06-16T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.darrenkbrien.com/2021/06/16/aws-batch.html"},"url":"http://blog.darrenkbrien.com/2021/06/16/aws-batch.html","description":"As fans of the hit Netflix series “Stranger Things,” we’re always on the lookout for ways to bring the Upside Down into our everyday lives. And what better way to do that than with AWS Batch, the cloud computing service that allows you to run batch processing jobs at any scale? In this blog post, we’ll explore how AWS Batch can help you demogorgon-proof your data processing, making it faster and more efficient than ever before. So grab your Eggo waffles and get ready to enter the world of AWS Batch!","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <h1>
+      <a href="/" class="navbar-brand">Darren K. Brien</a>
+    </h1>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item">
+          
+          <a href="/" class="nav-link">Home</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a href="/about" class="nav-link">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a href="/blog" class="nav-link">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a href="/talks" class="nav-link">Talks</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <div class="row">
+            <a href="http://twitter.com/darrenkbrien" class="nav-link fa fa-twitter fa-2x" target="_blank"></a>
+            <a href="http://twitter.com/darrenkbrien" class="nav-link" target="_blank"> Twitter</a>
+          </div>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <div class="row">
+            <a href="http://youtube.com/darrenbrien" class="nav-link fa fa-youtube fa-2x" target="_blank"></a>
+            <a href="http://youtube.com/darrenbrien" class="nav-link" target="_blank"> YouTube</a>
+          </div>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <div class="row">
+            <a href="http://github.com/darrenbrien" class="nav-link fa fa-code fa-2x" target="_blank"></a>
+            <a href="http://github.com/darrenbrien" class="nav-link" target="_blank"> Code</a>
+          </div>
+          
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-10 col-md-12">
+          <h1>AWS Batch: Your Data Processing Gateway to the Upside Down</h1>
+<p>16 Jun 2021 - Darren Brien</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<div class="share-box">
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="col-1"><span class="fa fa-share-alt"><b> Share</b></span></div>
+    <a class="col-1" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.darrenkbrien.com/2021/06/16/aws-batch.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-facebook-official fa-2x"></i></a>
+    <a class="col-1" href="https://twitter.com/intent/tweet?text=&url=http://blog.darrenkbrien.com/2021/06/16/aws-batch.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter fa-lg"></i><span></span></a>
+    <a class="col-1" href="http://www.reddit.com/submit?url=http://blog.darrenkbrien.com/2021/06/16/aws-batch.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-reddit fa-lg"></i></a>
+    <a class="col-1" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.darrenkbrien.com/2021/06/16/aws-batch.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-linkedin fa-lg"></i></a>
+    <a class="col-1" href="mailto:?subject=&amp;body=Check out this site http://blog.darrenkbrien.com/2021/06/16/aws-batch.html"><i class="fa fa-envelope fa-lg"></i></a></div>
+</div>
+
+
+<p>As fans of the hit Netflix series “Stranger Things,” we’re always on the lookout for ways to bring the Upside Down into our everyday lives. And what better way to do that than with AWS Batch, the cloud computing service that allows you to run batch processing jobs at any scale? In this blog post, we’ll explore how AWS Batch can help you demogorgon-proof your data processing, making it faster and more efficient than ever before. So grab your Eggo waffles and get ready to enter the world of AWS Batch!</p>
+
+<p>AWS Batch is a fully managed service that allows you to run batch computing workloads on the AWS Cloud. With AWS Batch, you can easily and efficiently run hundreds, thousands, or even millions of batch computing jobs. This makes it an ideal solution for organizations that need to process large amounts of data, such as financial institutions, healthcare providers, and e-commerce companies.</p>
+
+<p>But AWS Batch isn’t just for big businesses – it’s also a great tool for individual developers and small teams. With AWS Batch, you can focus on writing your code, rather than worrying about the infrastructure required to run your batch jobs. The service automatically scales to meet your workload needs, and it integrates seamlessly with other AWS services, such as Amazon S3 and Amazon EC2. This makes it easy to build and deploy your batch processing applications on the AWS Cloud.</p>
+
+<p>Provisioning AWS Batch with CDK is a quick and easy way to set up and manage your batch processing workloads on the AWS Cloud. CDK, or the AWS Cloud Development Kit, is an open-source framework that allows you to define your infrastructure as code and deploy it using familiar programming languages. With CDK, you can use the AWS Batch construct to define your batch computing environment, including the compute resources, job queues, and job definitions needed to run your batch jobs.</p>
+
+<p>CDK makes it easy to provision and manage your AWS Batch environment. You can use it to define your batch computing resources using a few lines of code, and then deploy them to the AWS Cloud with a single command. CDK also provides built-in integrations with other AWS services, such as Amazon S3 and Amazon EC2, which makes it easy to connect your batch jobs to the data and compute resources they need. This allows you to focus on writing and running your batch jobs, rather than worrying about the underlying infrastructure.</p>
+
+<p>AWS EFS Lustre is a high-performance file system that can be used with AWS Batch to provide fast, scalable storage for your batch computing workloads. EFS Lustre is designed for workloads that require low-latency access to large data sets, such as high-performance computing (HPC), machine learning, and media processing.</p>
+
+<p>When used with AWS Batch, EFS Lustre provides a fast, scalable storage solution for your batch jobs. You can mount EFS Lustre file systems on your compute instances and use them to store and access data directly from your batch jobs. This allows your batch jobs to access data quickly and efficiently, without the need to transfer data between compute instances or between on-premises storage and the cloud.</p>
+
+<p>EFS Lustre also provides seamless integration with other AWS services, such as Amazon S3 and Amazon EC2. This allows you to easily move data between your EFS Lustre file system and other storage services, or to spin up additional compute resources on-demand to support your batch processing workloads. Overall, EFS Lustre is an excellent choice for providing fast, scalable storage for your AWS Batch jobs.</p>
+
+<p>In this <a href="https://github.com/darrenbrien/aws-batch-101">example repo</a> is an example AWS batch data pipeline which demonstrate how to provision and EC2 cluster to work amazon EFX Lustre and compare its performance compared to working directly with S3.</p>
+
+<p>In conclusion, AWS Batch is a powerful and versatile service that can help you run batch processing jobs at any scale on the AWS Cloud. With its fully managed infrastructure, automatic scaling, and seamless integration with other AWS services, AWS Batch makes it easy to process large amounts of data quickly and efficiently. Whether you’re a big business, a small team, or an individual developer, AWS Batch has the tools and capabilities you need to get the most out of your batch processing workloads.</p>
+
+<p>So why wait? Start using AWS Batch today and experience the Upside Down world of cloud computing like never before. Just be sure to watch out for the Demogorgon – we hear it’s not a fan of batch processing!</p>
+
+<p>Here are some useful links that to get more details on AWS Batch:</p>
+
+<p>AWS Batch homepage: https://aws.amazon.com/batch/
+AWS Batch documentation: https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html
+AWS Batch pricing: https://aws.amazon.com/batch/pricing/
+AWS Batch tutorial: https://docs.aws.amazon.com/batch/latest/userguide/tutorial.html
+AWS Batch samples on GitHub: https://github.com/aws-samples/aws-batch-processing-job-repo
+AWS Batch forum on the AWS forums: https://repost.aws/tags/questions/TAAQ5TlH16Tc686CgyYUNX0g/aws-batch 
+These links will provide your readers with more information on AWS Batch, including how to get started with the service, how to use it to run batch processing jobs, and how to access additional resources and support.</p>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<div class="share-box">
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="col-1"><span class="fa fa-share-alt"><b> Share</b></span></div>
+    <a class="col-1" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.darrenkbrien.com/2021/06/16/aws-batch.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-facebook-official fa-2x"></i></a>
+    <a class="col-1" href="https://twitter.com/intent/tweet?text=&url=http://blog.darrenkbrien.com/2021/06/16/aws-batch.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter fa-lg"></i><span></span></a>
+    <a class="col-1" href="http://www.reddit.com/submit?url=http://blog.darrenkbrien.com/2021/06/16/aws-batch.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-reddit fa-lg"></i></a>
+    <a class="col-1" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.darrenkbrien.com/2021/06/16/aws-batch.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-linkedin fa-lg"></i></a>
+    <a class="col-1" href="mailto:?subject=&amp;body=Check out this site http://blog.darrenkbrien.com/2021/06/16/aws-batch.html"><i class="fa fa-envelope fa-lg"></i></a></div>
+</div>
+
+
+<br/>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-middle">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-lg-2 col-sm-3 col-6">
+        <a href="http://github.com/darrenbrien" class="fa fa-github fa-lg" target="_blank"> GitHub</a>
+      </div>
+      
+      <div class="col-lg-2 col-sm-3 col-6">
+        <a href="http://twitter.com/darrenkbrien" class="fa fa-twitter fa-lg" target="_blank"> Twitter</a>
+      </div>
+      
+      <div class="col-lg-2 col-sm-3 col-6">
+        <a href="http://linkedin.com/in/darrenbrien" class="fa fa-linkedin fa-lg" target="_blank"> Linkedin</a>
+      </div>
+      
+      <div class="col-lg-2 col-sm-3 col-6">
+        <a href="http://youtube.com/darrenbrien" class="fa fa-youtube fa-lg" target="_blank"> YouTube</a>
+      </div>
+      
+      <div class="col-lg-2 col-md-12">
+        <div class="float-right">
+          <a href='#' class="fa fa-arrow-circle-o-up fa-lg">back to top</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 col-md-12 copy">
+        <p class="text-center">&copy; 2020 - Darren Brien</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  </body>
+</html>

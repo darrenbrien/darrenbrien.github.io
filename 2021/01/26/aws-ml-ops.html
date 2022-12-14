@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/main.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/images/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/images/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180x180.png" />
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>A Journey through MLOps on AWS Sagemaker | darren brien’s blog</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="A Journey through MLOps on AWS Sagemaker" />
+<meta name="author" content="Darren Brien" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Leveraging Machine Learning on AWS Sagemaker using SageMaker pipelines" />
+<meta property="og:description" content="Leveraging Machine Learning on AWS Sagemaker using SageMaker pipelines" />
+<link rel="canonical" href="http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" />
+<meta property="og:url" content="http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" />
+<meta property="og:site_name" content="darren brien’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-26T00:00:00+00:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Darren Brien"},"headline":"A Journey through MLOps on AWS Sagemaker","dateModified":"2021-01-26T00:00:00+00:00","datePublished":"2021-01-26T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html"},"url":"http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html","description":"Leveraging Machine Learning on AWS Sagemaker using SageMaker pipelines","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <h1>
+      <a href="/" class="navbar-brand">Darren K. Brien</a>
+    </h1>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item">
+          
+          <a href="/" class="nav-link">Home</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a href="/about" class="nav-link">About</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a href="/blog" class="nav-link">Blog</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a href="/talks" class="nav-link">Talks</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <div class="row">
+            <a href="http://twitter.com/darrenkbrien" class="nav-link fa fa-twitter fa-2x" target="_blank"></a>
+            <a href="http://twitter.com/darrenkbrien" class="nav-link" target="_blank"> Twitter</a>
+          </div>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <div class="row">
+            <a href="http://youtube.com/darrenbrien" class="nav-link fa fa-youtube fa-2x" target="_blank"></a>
+            <a href="http://youtube.com/darrenbrien" class="nav-link" target="_blank"> YouTube</a>
+          </div>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <div class="row">
+            <a href="http://github.com/darrenbrien" class="nav-link fa fa-code fa-2x" target="_blank"></a>
+            <a href="http://github.com/darrenbrien" class="nav-link" target="_blank"> Code</a>
+          </div>
+          
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-10 col-md-12">
+          <h1>A Journey through MLOps on AWS Sagemaker</h1>
+<p>26 Jan 2021 - Darren Brien</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<div class="share-box">
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="col-1"><span class="fa fa-share-alt"><b> Share</b></span></div>
+    <a class="col-1" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-facebook-official fa-2x"></i></a>
+    <a class="col-1" href="https://twitter.com/intent/tweet?text=&url=http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter fa-lg"></i><span></span></a>
+    <a class="col-1" href="http://www.reddit.com/submit?url=http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-reddit fa-lg"></i></a>
+    <a class="col-1" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-linkedin fa-lg"></i></a>
+    <a class="col-1" href="mailto:?subject=&amp;body=Check out this site http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html"><i class="fa fa-envelope fa-lg"></i></a></div>
+</div>
+
+
+<p>Welcome to the world of MLOps on AWS, where the rhythms of machine learning and cloud operations merge to create a futuristic symphony of data-driven decision making. Imagine yourself cruising down the information superhighway in a DeLorean, jamming out to the sounds of “Take On Me” by A-ha. As you enter the cloud computing landscape, you’re met with the powerful and flexible tools of AWS, ready to help you train and deploy machine learning models at scale. With MLOps on AWS, you can optimize your model performance and manage your infrastructure with ease, all while feeling like a total “Material Girl” in the world of AI. So buckle up and get ready to rock out with MLOps on AWS – the future of machine learning is here and it’s totally rad!</p>
+
+<p>Once you’ve arrived in the world of MLOps on AWS, you’ll have access to a plethora of services that can help you deliver your machine learning workloads with ease. One of the most popular and powerful tools is Amazon SageMaker, which provides a fully managed environment for training, fine-tuning, and deploying machine learning models. With SageMaker, you can quickly and easily build, train, and deploy models using a variety of popular open-source frameworks, such as TensorFlow and PyTorch.</p>
+
+<p>Additionally, AWS offers a range of services that can help you manage and optimize your machine learning infrastructure, including Amazon EC2 for computing power and Amazon S3 for storage. With these tools, you can easily spin up and down compute resources as needed, scale your storage capacity to meet the demands of your data, and even automate the process of model training and deployment using AWS Lambda and Amazon API Gateway.</p>
+
+<p>Of course, no MLOps journey on AWS would be complete without a stop at the AWS Marketplace, where you can find a wide variety of pre-trained models and algorithms, as well as tools and services to help you get started quickly and easily. With the AWS Marketplace, you can easily search and compare different offerings, and even try out many of the available products for free, so you can find the right solution for your specific needs.</p>
+
+<p>So why wait? Start your MLOps adventure on AWS today and experience the power and flexibility of the cloud for yourself! Who knows, you might just become the next “King of Rock” in the world of machine learning.</p>
+
+<p>Amazon SageMaker Pipelines is a feature of Amazon SageMaker that lets you build, automate, and manage end-to-end machine learning workflows. This can help you improve model development and delivery by allowing you to automate and manage the entire model training and deployment process.</p>
+
+<p>With SageMaker Pipelines, you can define a pipeline that specifies the sequence of steps that your machine learning model should go through, from data preparation and preprocessing to model training and evaluation to model deployment. You can then use this pipeline to automate and manage the entire model development and deployment process, ensuring that your model is trained and deployed consistently and reliably.</p>
+
+<p>One of the key benefits of using SageMaker Pipelines is that it provides model provenance, which is the ability to track the lineage of your model and understand how it was developed. This can help you understand the history of your model and make it easier to audit, reproduce, and improve your model over time.</p>
+
+<p>To use SageMaker Pipelines, you will first need to create a pipeline definition that specifies the sequence of steps that your machine learning model should go through. You can use the SageMaker Python SDK or the SageMaker console to create this pipeline definition. Then, you can use the SageMaker Python SDK or the AWS CLI to run the pipeline and automatically execute the defined steps in the correct order. This will help you automate and manage the entire model development and deployment process, ensuring that your model is trained and deployed consistently and reliably.</p>
+
+<p>Here is an example of how you can use Amazon SageMaker Pipelines to automate and manage the end-to-end machine learning workflow for a simple image classification model:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#</span> <span class="n">Import</span> <span class="n">the</span> <span class="n">necessary</span> <span class="n">modules</span>
+<span class="k">from</span> <span class="n">sagemaker</span> <span class="n">import</span> <span class="n">get_execution_role</span>
+<span class="k">from</span> <span class="n">sagemaker</span><span class="p">.</span><span class="n">pipeline</span> <span class="n">import</span> <span class="n">PipelineModel</span>
+<span class="k">from</span> <span class="n">sagemaker</span><span class="p">.</span><span class="n">sklearn</span><span class="p">.</span><span class="n">processing</span> <span class="n">import</span> <span class="n">SKLearnProcessor</span>
+<span class="k">from</span> <span class="n">sagemaker</span><span class="p">.</span><span class="n">sklearn</span><span class="p">.</span><span class="n">estimator</span> <span class="n">import</span> <span class="n">SKLearn</span>
+
+<span class="p">#</span> <span class="n">Get</span> <span class="n">the</span> <span class="n">execution</span> <span class="n">role</span> <span class="n">for</span> <span class="n">the</span> <span class="n">SageMaker</span> <span class="n">notebook</span>
+<span class="n">role</span> <span class="p">=</span> <span class="n">get_execution_role</span><span class="p">()</span>
+
+<span class="p">#</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">SKLearnProcessor</span> <span class="k">to</span> <span class="n">preprocess</span> <span class="n">the</span> <span class="n">data</span>
+<span class="n">sklearn_processor</span> <span class="p">=</span> <span class="n">SKLearnProcessor</span><span class="p">(</span><span class="n">framework_version</span><span class="p">=</span><span class="s1">'0.20.0'</span><span class="p">,</span>
+                                     <span class="n">role</span><span class="p">=</span><span class="n">role</span><span class="p">,</span>
+                                     <span class="n">instance_type</span><span class="p">=</span><span class="s1">'ml.m5.xlarge'</span><span class="p">,</span>
+                                     <span class="n">instance_count</span><span class="p">=</span><span class="m">1</span><span class="p">)</span>
+
+<span class="p">#</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">SKLearn</span> <span class="n">Estimator</span> <span class="n">for</span> <span class="n">training</span> <span class="n">the</span> <span class="k">model</span>
+<span class="n">sklearn_estimator</span> <span class="p">=</span> <span class="n">SKLearn</span><span class="p">(</span><span class="n">entry_point</span><span class="p">=</span><span class="s1">'train.py'</span><span class="p">,</span>
+                            <span class="n">role</span><span class="p">=</span><span class="n">role</span><span class="p">,</span>
+                            <span class="n">framework_version</span><span class="p">=</span><span class="s1">'0.20.0'</span><span class="p">,</span>
+                            <span class="n">train_instance_type</span><span class="p">=</span><span class="s1">'ml.m5.xlarge'</span><span class="p">,</span>
+                            <span class="n">train_instance_count</span><span class="p">=</span><span class="m">1</span><span class="p">)</span>
+
+<span class="p">#</span> <span class="n">Define</span> <span class="n">the</span> <span class="n">pipeline</span> <span class="k">model</span>
+<span class="k">model</span> <span class="p">=</span> <span class="n">PipelineModel</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="s2">"image-classification-pipeline"</span><span class="p">,</span>
+                      <span class="n">role</span><span class="p">=</span><span class="n">role</span><span class="p">,</span>
+                      <span class="n">models</span><span class="p">=[</span><span class="n">sklearn_processor</span><span class="p">,</span> <span class="n">sklearn_estimator</span><span class="p">])</span>
+
+<span class="p">#</span> <span class="nf">Run</span> <span class="n">the</span> <span class="n">pipeline</span>
+<span class="k">model</span><span class="p">.</span><span class="n">fit</span><span class="p">({</span><span class="s2">"processing"</span><span class="p">:</span> <span class="s2">"s3://my-bucket/data/train"</span><span class="p">,</span> <span class="s2">"training"</span><span class="p">:</span> <span class="s2">"s3://my-bucket/data/train"</span><span class="p">})</span>
+</code></pre></div></div>
+
+<p>In this snippet we train a simple image classification model in a pipeline with 2 steps, the first processing some data and the second training the model.</p>
+
+<p>So there you have it – a brief introduction to the world of MLOps on AWS, where machine learning and cloud operations come together to create a symphony of data-driven decision making. With the powerful and flexible tools of AWS, you can easily build, train, and deploy machine learning models at scale, and optimize your infrastructure for maximum performance.</p>
+
+<p>And as the famous 80s singer Cyndi Lauper once said, “Girls just want to have fun” – and with MLOps on AWS, you can have plenty of fun while managing your machine learning workloads with ease. So why not give it a try and see for yourself?</p>
+
+<p>For more information on MLOps on AWS, check out the following resources:</p>
+
+<p>Amazon SageMaker: https://aws.amazon.com/sagemaker/
+AWS Marketplace: https://aws.amazon.com/marketplace/
+AWS Machine Learning Blog: https://aws.amazon.com/blogs/machine-learning/
+Or, as the legendary 80s band Journey would say, “Don’t stop believin’ – hold on to that feelin’!” Happy MLOps-ing!</p>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<div class="share-box">
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="col-1"><span class="fa fa-share-alt"><b> Share</b></span></div>
+    <a class="col-1" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-facebook-official fa-2x"></i></a>
+    <a class="col-1" href="https://twitter.com/intent/tweet?text=&url=http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter fa-lg"></i><span></span></a>
+    <a class="col-1" href="http://www.reddit.com/submit?url=http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-reddit fa-lg"></i></a>
+    <a class="col-1" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><i class="fa fa-linkedin fa-lg"></i></a>
+    <a class="col-1" href="mailto:?subject=&amp;body=Check out this site http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html"><i class="fa fa-envelope fa-lg"></i></a></div>
+</div>
+
+
+<br/>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-middle">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-lg-2 col-sm-3 col-6">
+        <a href="http://github.com/darrenbrien" class="fa fa-github fa-lg" target="_blank"> GitHub</a>
+      </div>
+      
+      <div class="col-lg-2 col-sm-3 col-6">
+        <a href="http://twitter.com/darrenkbrien" class="fa fa-twitter fa-lg" target="_blank"> Twitter</a>
+      </div>
+      
+      <div class="col-lg-2 col-sm-3 col-6">
+        <a href="http://linkedin.com/in/darrenbrien" class="fa fa-linkedin fa-lg" target="_blank"> Linkedin</a>
+      </div>
+      
+      <div class="col-lg-2 col-sm-3 col-6">
+        <a href="http://youtube.com/darrenbrien" class="fa fa-youtube fa-lg" target="_blank"> YouTube</a>
+      </div>
+      
+      <div class="col-lg-2 col-md-12">
+        <div class="float-right">
+          <a href='#' class="fa fa-arrow-circle-o-up fa-lg">back to top</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 col-md-12 copy">
+        <p class="text-center">&copy; 2020 - Darren Brien</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  </body>
+</html>
