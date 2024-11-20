@@ -19,9 +19,9 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-touch-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180x180.png" />
-    <!-- Begin Jekyll SEO tag v2.6.1 -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Google Cloud and BigQuery: The ‘Common People’ of Machine Learning Tools | darren brien’s blog</title>
-<meta name="generator" content="Jekyll v4.0.0" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="Google Cloud and BigQuery: The ‘Common People’ of Machine Learning Tools" />
 <meta name="author" content="Darren Brien" />
 <meta property="og:locale" content="en_US" />
@@ -32,8 +32,10 @@
 <meta property="og:site_name" content="darren brien’s blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-03-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Google Cloud and BigQuery: The ‘Common People’ of Machine Learning Tools" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Darren Brien"},"headline":"Google Cloud and BigQuery: The ‘Common People’ of Machine Learning Tools","dateModified":"2021-03-12T00:00:00+00:00","datePublished":"2021-03-12T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.darrenkbrien.com/2021/03/12/gcp-ml-bq.html"},"url":"http://blog.darrenkbrien.com/2021/03/12/gcp-ml-bq.html","description":"In this blog post, we explore how Google Cloud Platform and BigQuery can be used to build and deploy powerful machine learning models. We discuss the advantages of using these tools and highlight other Google Cloud services that are useful for machine learning. Google Cloud Platform, BigQuery, machine learning, data warehousing, Cloud AI Platform, Cloud AutoML.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Darren Brien"},"dateModified":"2021-03-12T00:00:00+00:00","datePublished":"2021-03-12T00:00:00+00:00","description":"In this blog post, we explore how Google Cloud Platform and BigQuery can be used to build and deploy powerful machine learning models. We discuss the advantages of using these tools and highlight other Google Cloud services that are useful for machine learning. Google Cloud Platform, BigQuery, machine learning, data warehousing, Cloud AI Platform, Cloud AutoML.","headline":"Google Cloud and BigQuery: The ‘Common People’ of Machine Learning Tools","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.darrenkbrien.com/2021/03/12/gcp-ml-bq.html"},"url":"http://blog.darrenkbrien.com/2021/03/12/gcp-ml-bq.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -149,7 +151,7 @@
 
 <p>Here is an example SQL statement that can be used to train a linear regression model using BigQuery ML:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE OR REPLACE MODEL my_model
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE OR REPLACE MODEL my_model
 OPTIONS
   (model_type='linear_reg',
    input_label_cols=['label_column']) AS
