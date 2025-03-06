@@ -19,9 +19,9 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/assets/images/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/apple-touch-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon-180x180.png" />
-    <!-- Begin Jekyll SEO tag v2.6.1 -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>A Journey through MLOps on AWS Sagemaker | darren brien’s blog</title>
-<meta name="generator" content="Jekyll v4.0.0" />
+<meta name="generator" content="Jekyll v4.2.2" />
 <meta property="og:title" content="A Journey through MLOps on AWS Sagemaker" />
 <meta name="author" content="Darren Brien" />
 <meta property="og:locale" content="en_US" />
@@ -31,9 +31,11 @@
 <meta property="og:url" content="http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html" />
 <meta property="og:site_name" content="darren brien’s blog" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-01-26T00:00:00+00:00" />
+<meta property="article:published_time" content="2021-01-26T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="A Journey through MLOps on AWS Sagemaker" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Darren Brien"},"headline":"A Journey through MLOps on AWS Sagemaker","dateModified":"2021-01-26T00:00:00+00:00","datePublished":"2021-01-26T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html"},"url":"http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html","description":"Leveraging Machine Learning on AWS Sagemaker using SageMaker pipelines","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Darren Brien"},"dateModified":"2021-01-26T00:00:00-06:00","datePublished":"2021-01-26T00:00:00-06:00","description":"Leveraging Machine Learning on AWS Sagemaker using SageMaker pipelines","headline":"A Journey through MLOps on AWS Sagemaker","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html"},"url":"http://blog.darrenkbrien.com/2021/01/26/aws-ml-ops.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -145,35 +147,35 @@
 
 <p>Here is an example of how you can use Amazon SageMaker Pipelines to automate and manage the end-to-end machine learning workflow for a simple image classification model:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">#</span> <span class="n">Import</span> <span class="n">the</span> <span class="n">necessary</span> <span class="n">modules</span>
-<span class="k">from</span> <span class="n">sagemaker</span> <span class="n">import</span> <span class="n">get_execution_role</span>
-<span class="k">from</span> <span class="n">sagemaker</span><span class="p">.</span><span class="n">pipeline</span> <span class="n">import</span> <span class="n">PipelineModel</span>
-<span class="k">from</span> <span class="n">sagemaker</span><span class="p">.</span><span class="n">sklearn</span><span class="p">.</span><span class="n">processing</span> <span class="n">import</span> <span class="n">SKLearnProcessor</span>
-<span class="k">from</span> <span class="n">sagemaker</span><span class="p">.</span><span class="n">sklearn</span><span class="p">.</span><span class="n">estimator</span> <span class="n">import</span> <span class="n">SKLearn</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Import the necessary modules
+from sagemaker import get_execution_role
+from sagemaker.pipeline import PipelineModel
+from sagemaker.sklearn.processing import SKLearnProcessor
+from sagemaker.sklearn.estimator import SKLearn
 
-<span class="p">#</span> <span class="n">Get</span> <span class="n">the</span> <span class="n">execution</span> <span class="n">role</span> <span class="n">for</span> <span class="n">the</span> <span class="n">SageMaker</span> <span class="n">notebook</span>
-<span class="n">role</span> <span class="p">=</span> <span class="n">get_execution_role</span><span class="p">()</span>
+# Get the execution role for the SageMaker notebook
+role = get_execution_role()
 
-<span class="p">#</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">SKLearnProcessor</span> <span class="k">to</span> <span class="n">preprocess</span> <span class="n">the</span> <span class="n">data</span>
-<span class="n">sklearn_processor</span> <span class="p">=</span> <span class="n">SKLearnProcessor</span><span class="p">(</span><span class="n">framework_version</span><span class="p">=</span><span class="s1">'0.20.0'</span><span class="p">,</span>
-                                     <span class="n">role</span><span class="p">=</span><span class="n">role</span><span class="p">,</span>
-                                     <span class="n">instance_type</span><span class="p">=</span><span class="s1">'ml.m5.xlarge'</span><span class="p">,</span>
-                                     <span class="n">instance_count</span><span class="p">=</span><span class="m">1</span><span class="p">)</span>
+# Create a SKLearnProcessor to preprocess the data
+sklearn_processor = SKLearnProcessor(framework_version='0.20.0',
+                                     role=role,
+                                     instance_type='ml.m5.xlarge',
+                                     instance_count=1)
 
-<span class="p">#</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">SKLearn</span> <span class="n">Estimator</span> <span class="n">for</span> <span class="n">training</span> <span class="n">the</span> <span class="k">model</span>
-<span class="n">sklearn_estimator</span> <span class="p">=</span> <span class="n">SKLearn</span><span class="p">(</span><span class="n">entry_point</span><span class="p">=</span><span class="s1">'train.py'</span><span class="p">,</span>
-                            <span class="n">role</span><span class="p">=</span><span class="n">role</span><span class="p">,</span>
-                            <span class="n">framework_version</span><span class="p">=</span><span class="s1">'0.20.0'</span><span class="p">,</span>
-                            <span class="n">train_instance_type</span><span class="p">=</span><span class="s1">'ml.m5.xlarge'</span><span class="p">,</span>
-                            <span class="n">train_instance_count</span><span class="p">=</span><span class="m">1</span><span class="p">)</span>
+# Create a SKLearn Estimator for training the model
+sklearn_estimator = SKLearn(entry_point='train.py',
+                            role=role,
+                            framework_version='0.20.0',
+                            train_instance_type='ml.m5.xlarge',
+                            train_instance_count=1)
 
-<span class="p">#</span> <span class="n">Define</span> <span class="n">the</span> <span class="n">pipeline</span> <span class="k">model</span>
-<span class="k">model</span> <span class="p">=</span> <span class="n">PipelineModel</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="s2">"image-classification-pipeline"</span><span class="p">,</span>
-                      <span class="n">role</span><span class="p">=</span><span class="n">role</span><span class="p">,</span>
-                      <span class="n">models</span><span class="p">=[</span><span class="n">sklearn_processor</span><span class="p">,</span> <span class="n">sklearn_estimator</span><span class="p">])</span>
+# Define the pipeline model
+model = PipelineModel(name="image-classification-pipeline",
+                      role=role,
+                      models=[sklearn_processor, sklearn_estimator])
 
-<span class="p">#</span> <span class="nf">Run</span> <span class="n">the</span> <span class="n">pipeline</span>
-<span class="k">model</span><span class="p">.</span><span class="n">fit</span><span class="p">({</span><span class="s2">"processing"</span><span class="p">:</span> <span class="s2">"s3://my-bucket/data/train"</span><span class="p">,</span> <span class="s2">"training"</span><span class="p">:</span> <span class="s2">"s3://my-bucket/data/train"</span><span class="p">})</span>
+# Run the pipeline
+model.fit({"processing": "s3://my-bucket/data/train", "training": "s3://my-bucket/data/train"})
 </code></pre></div></div>
 
 <p>In this snippet we train a simple image classification model in a pipeline with 2 steps, the first processing some data and the second training the model.</p>
