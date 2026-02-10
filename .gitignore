@@ -2,4 +2,5 @@
 .jekyll-cache
 _site/
 node_modules/
+darrenbrien.github.io/
 .DS_STORE
