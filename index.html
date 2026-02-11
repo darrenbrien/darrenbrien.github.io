@@ -4,6 +4,9 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/main.css">
     <!--[if lt IE 9]>
@@ -116,78 +119,84 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-10 col-md-12">
-          <!-- 1. The Full-Width Hero Section -->
-<div class="full-width-breakout">
-  <div class="profile-hero">
-    <!-- The Landscape Background Image -->
-    <div class="hero-cover" style="background-image: url('/assets/images/cover.webp');"></div>
+          </div>
 
-    <!-- The Overlapping Headshot & Intro -->
-  </div>
+<div class="w-100 mb-5 position-relative" style="background-color: #212529;">
+  <div class="hero-cover w-100" style="
+      background-image: url('/assets/images/cover.webp');
+      height: 280px;
+      background-size: cover;
+      background-position: top right;
+      background-repeat: no-repeat;
+  "></div>
 </div>
 
-<!-- 2. The Services / Navigation Cards -->
-<div class="row my-5">
+<div class="container">
 
-    <div class="container hero-content">
-      <h1>Building Intelligent Systems</h1>
-      <p class="lead-text">
-        Independent AI & Cloud Consultant helping enterprises move beyond the hype.
-        Specialized in Large Language Models, MLOps, and Cloud Architecture.
-      </p>
-
-      <div>
-        <a href="/services" class="btn btn-primary cta-btn mx-2">My Services</a>
-        <a href="https://calendar.app.google/Hf6HoZEyTDp29oDa6" class="btn btn-outline-dark cta-btn mx-2">Get in Touch</a>
-      </div>
-    </div>
-
-  <!-- About / Strategy Card -->
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="card modern-card">
-      <div class="card-header">
-        <i class="fa fa-terminal text-primary mr-2"></i> Strategy
-      </div>
-      <div class="card-body">
-        <p>
-          Expert guidance on AI adoption, cloud modernization, and technical leadership for engineering teams.
+  <div class="text-center mb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h1 class="hero-title mb-3">Building Intelligent Systems</h1>
+        <p class="hero-subtitle text-secondary mb-4">
+          Independent AI & Cloud Consultant helping enterprises move beyond the hype.
+          Specialized in Large Language Models, MLOps, and Cloud Architecture.
         </p>
-        <a href="/about" class="stretched-link font-weight-bold text-decoration-none">About Me &rarr;</a>
+        <div>
+          <a href="/services" class="btn btn-dark btn-lg px-4 mx-2">My Services</a>
+          <a href="https://calendar.app.google/Hf6HoZEyTDp29oDa6" class="btn btn-outline-dark btn-lg px-4 mx-2">Get in Touch</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Blog / Case Studies Card -->
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="card modern-card">
-      <div class="card-header">
-        <i class="fa fa-newspaper-o text-primary mr-2"></i> Insights
-      </div>
-      <div class="card-body">
-        <p>
-          Technical deep-dives into LLMs, RAG architectures, and solving real-world data problems.
-        </p>
-        <a href="/blog" class="stretched-link font-weight-bold text-decoration-none">Read Case Studies &rarr;</a>
+  <div class="row">
+
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body p-4 text-center">
+          <div class="text-primary mb-3">
+            <i class="fa fa-terminal fa-2x"></i>
+          </div>
+          <h3 class="h5 font-weight-bold">Strategy</h3>
+          <p class="text-muted small">
+            Expert guidance on AI adoption, cloud modernization, and technical leadership for engineering teams.
+          </p>
+          <a href="/about" class="stretched-link btn-link text-decoration-none">About Me &rarr;</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Talks / Speaking Card -->
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="card modern-card">
-      <div class="card-header">
-        <i class="fa fa-microphone text-primary mr-2"></i> Speaking
-      </div>
-      <div class="card-body">
-        <p>
-          I present frequently about my work and co-organise the London Multi-Cloud meetup group.
-        </p>
-        <a href="/talks" class="stretched-link font-weight-bold text-decoration-none">View Talks &rarr;</a>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body p-4 text-center">
+          <div class="text-primary mb-3">
+            <i class="fa fa-newspaper-o fa-2x"></i>
+          </div>
+          <h3 class="h5 font-weight-bold">Insights</h3>
+          <p class="text-muted small">
+            Technical deep-dives into LLMs, RAG architectures, and solving real-world data problems.
+          </p>
+          <a href="/blog" class="stretched-link btn-link text-decoration-none">Read Case Studies &rarr;</a>
+        </div>
       </div>
     </div>
-  </div>
 
-</div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body p-4 text-center">
+          <div class="text-primary mb-3">
+            <i class="fa fa-microphone fa-2x"></i>
+          </div>
+          <h3 class="h5 font-weight-bold">Speaking</h3>
+          <p class="text-muted small">
+            I present frequently about my work and co-organise the London Multi-Cloud meetup group.
+          </p>
+          <a href="/talks" class="stretched-link btn-link text-decoration-none">View Talks &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
         </div>
       </div>
@@ -221,7 +230,7 @@
     </div>
     <div class="row">
       <div class="col-lg-10 col-md-12 copy">
-        <p class="text-center">&copy; 2020 - Darren Brien</p>
+        <p class="text-center">&copy; 2026 - Darren Brien</p>
       </div>
     </div>
   </div>
